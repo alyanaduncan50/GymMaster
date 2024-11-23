@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+/* Universal reset and font family */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Section that contains the contact form and info */
+.contact {
+    position: relative;
+    min-height: 100vh; /* Full viewport height */
+    padding: 50px 100px; /* Padding for spacing around content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack content vertically */
+    background: url(https://rare-gallery.com/uploads/posts/500944-simple-background.jpg);
+    background-size: cover; /* Full background image coverage */
+}
+
+/* Styling for the main content heading and paragraph */
+.contact .content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.contact .content h2 {
+    font-size: 36px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.contact .content p {
+    font-weight: 300;
+    color: #000000;
+}
+
+/* Container holding both the contact info and the form */
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px; /* Top margin for spacing */
+    margin-bottom: 40px; /* Space between contact info and form */
+}
+
+/* Contact info section */
+.container .contactInfo {
+    width: 50%; /* Takes up 50% of the container width */
+    display: flex;
+    flex-direction: column; /* Stack the info boxes vertically */
+}
+
+/* Individual contact info box */
+.container .contactInfo .box {
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+}
+
+/* Styling for the icon in each contact box */
+.container .contactInfo .box .icon {
+    min-width: 60px;
+    height: 60px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Circular icon */
+    font-size: 22px; /* Icon size */
+}
+
+/* Styling for the text in each contact box */
+.container .contactInfo .box .text {
+    display: flex;
+    margin-left: 20px; /* Space between icon and text */
+    font-size: 16px;
+    color: #000000;
+    flex-direction: column; /* Stack text vertically */
+    font-weight: 300;
+}
+
+/* Heading inside each info box (address, phone, email) */
+.container .contactInfo .box .text h3 {
+    font-weight: 500;
+    color: #1f89b7; 
+}
+
+/* Form section for sending messages */
+.contactForm {
+    width: 40%; /* Form takes up 40% of the container width */
+    padding: 40px; /* Padding inside the form */
+    background: #fff; 
+    margin-top: 40px; /* Added margin-top to create space from the contact info */
+}
+
+/* Heading inside the contact form */
+.contactForm h2 {
+    font-size: 30px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Styling for input boxes in the form */
+.contactForm .inputBox {
+    position: relative;
+    width: 100%;
+    margin-top: 10px; /* Space between input boxes */
+}
+
+/* Styling for input fields and textarea */
+.contactForm .inputBox input,
+.contactForm .inputBox textarea {
+    width: 100%;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0; /* Space between the input and next element */
+    border: none;
+    border-bottom: 2px solid #333; 
+    outline: none;
+    resize: none; /* Disables resizing for the textarea */
+}
+
+/* Styling for the labels inside the input boxes */
+.contactForm .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    pointer-events: none; /* Prevents interaction with the label */
+    transition: 0.5s; /* Smooth transition for label movement */
+    color: #666; 
+}
+
+/* Animation for label when input is focused or valid */
+.contactForm .inputBox input:focus ~ span,
+.contactForm .inputBox input:valid ~ span,
+.contactForm .inputBox textarea:focus ~ span,
+.contactForm .inputBox textarea:valid ~ span {
+    color: #e91e63; 
+    font-size: 12px; /* Smaller font size when focused */
+    transform: translateY(-20px); /* Move label up */
+}
+
+/* Styling for submit button */
+.contactForm .inputBox input[type="submit"] {
+    width: 100px; /* Width of the submit button */
+    background: #1f89b7; 
+    color: #fff; /* White text */
+    border: none;
+    cursor: pointer; /* Cursor changes to pointer */
+    padding: 10px;
+    font-size: 18px;
+}
+
+/* Media query for responsiveness on smaller screens */
+@media (max-width: 991px) {
+    /* Adjust contact section padding for smaller screens */
+    .contact {
+        padding: 50px;
+    }
+
+    /* Stack contact info boxes vertically on smaller screens */
+    .container {
+        flex-direction: column;
+    }
+
+    /* Add space below the contact info on small screens */
+    .container .contactInfo {
+        margin-bottom: 40px;
+    }
+
+    /* Make the contact info section take up full width */
+    .container .contactInfo {
+        width: 100%;
+    }
+}
