@@ -1,0 +1,15 @@
+.login {
+    overflow: hidden;
+    height: 100vh;
+    background: url("../../img/login_bg.png") no-repeat center center;
+    background-size: cover;
+    padding: 20px;
+}
+
+.login-card {
+    background: #fff;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 5px;
+}

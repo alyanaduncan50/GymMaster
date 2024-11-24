@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>GymMaster | Control Panel</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <link href="./assets/css/utilities.css" rel="stylesheet">
+    <link href="assets/css/screens/login.css" rel="stylesheet">
+  </head>
+  <body>
+    <section class="flex items-center login">
+      <div class="container">
+        <div class="grid grid-rows-1">
+          <form class="loginForm" method="POST">
+            <div class="shadow login-card">
+              <div class="logo_container border-b mx-auto p-3">
+                <a href="/">
+                  <img alt="GymMaster" class="logo mx-auto img-fluid" src="./assets/img/logo.png">
+                </a>
+              </div>
+              <div class="grid grid-cols-1 gap-lg p-5 pt-3">
+                <div class="input-group">
+                  <label class="label" for="username">Username </label>
+                  <input  class="form-control" id="username" placeholder="Enter Username" type="text" />
+                  <span class="error-message" id="username-error"></span>
+
+                </div>
+                <div class="input-group">
+                  <label class="label" for="password">Password </label>
+                  <input class="form-control" id="password" placeholder="Enter Password" type="password" />
+                  <span class="error-message" id="password-error"></span>
+                </div>
+              </div>
+              <div class="px-5 pb-5">
+                <button class="btn btn-primary w-full" type="submit">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script src="/assets/js/login.js" type="module"></script>
+  </body>
+</html>

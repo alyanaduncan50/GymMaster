@@ -1,0 +1,112 @@
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 576px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 992px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* Grid */
+.grid {
+  display: grid;
+}
+
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+/* Gaps */
+.gap {
+  gap: 0.25rem;
+}
+
+.gap-sm {
+  gap: 0.5rem;
+}
+
+.gap-md {
+  gap: 0.75rem;
+}
+
+.gap-lg {
+  gap: 1rem;
+}
+
+.gap-xl {
+  gap: 1.25rem;
+}
+
+/*Spacing*/
+.p-0 {
+  padding: 0;
+}
+.p-3 {
+  padding: 1rem;
+}
+.p-5 {
+  padding: 2rem;
+}
+.px-5 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.pt-3 {
+  padding-top: 1.5rem;
+}
+
+.pb-5 {
+  padding-bottom: 2rem;
+}
+
+/* Border */
+.border-b {
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+.mb-2 {
+  margin-bottom: 1rem;
+}
+.mb-5 {
+  margin-bottom: 2rem;
+}
