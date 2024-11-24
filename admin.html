@@ -13,6 +13,7 @@
     <link href="./assets/css/style.css" rel="stylesheet" />
     <link href="./assets/css/utilities.css" rel="stylesheet" />
     <link href="./assets/css/modules/table.css" rel="stylesheet" />
+    <link href="./assets/css/modules/modal.css" rel="stylesheet" />
   </head>
   <body>
     <header class="header shadow">
@@ -236,5 +237,124 @@
         </div>
       </section>
     </main>
-
    
+    <!--Create User Modal -->
+    <div class="modal-backdrop" id="userModal">
+        <div class="modal">
+          <div class="modal-header">
+            <h2>Create New User</h2>
+            <button class="close close-modal">&times;</button>
+          </div>
+          <div
+            class="alert alert-success"
+            id="successMessage"
+            role="alert"
+            style="display: none"
+          >
+            User created successfully
+          </div>
+          <div class="modal-body">
+            <form class="addUserForm" id="addUserForm" method="POST">
+              <div class="grid grid-cols-1 gap-lg">
+                <div class="grid grid-cols-2 gap-lg">
+                  <div class="input-group">
+                    <label class="label" for="firstName">First Name</label>
+                    <input
+                      class="form-control"
+                      id="firstName"
+                      name="firstName"
+                      placeholder="Enter First Name"
+                      type="text"
+                    />
+                    <span class="error-message" id="firstName-error"></span>
+                  </div>
+                  <div class="input-group">
+                    <label class="label" for="lastName">Last Name</label>
+                    <input
+                      class="form-control"
+                      id="lastName"
+                      name="lastName"
+                      placeholder="Enter Last Name"
+                      type="text"
+                    />
+                    <span class="error-message" id="lastName-error"></span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 gap-lg">
+                  <div class="input-group">
+                    <label class="label" for="email">Email Address</label>
+                    <input
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      placeholder="Enter Email Address"
+                      type="email"
+                    />
+                    <span class="error-message" id="email-error"></span>
+                  </div>
+                  <div class="input-group">
+                    <label class="label" for="newUsername">Username</label>
+                    <input
+                      class="form-control"
+                      id="newUsername"
+                      name="newUsername"
+                      placeholder="Enter Username"
+                      type="text"
+                    />
+                    <span class="error-message" id="newUsername-error"></span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-lg">
+                  <div class="input-group">
+                    <label class="label" for="newPassword">Password</label>
+                    <input
+                      class="form-control"
+                      id="newPassword"
+                      name="newPassword"
+                      placeholder="Enter Password"
+                      type="password"
+                    />
+                    <span class="error-message" id="newPassword-error"></span>
+                  </div>
+                  <div class="input-group">
+                    <label class="label" for="confirmPassword"
+                      >Confirm Password</label
+                    >
+                    <input
+                      class="form-control"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      placeholder="Confirm Password"
+                      type="password"
+                    />
+                    <span class="error-message" id="confirmPassword-error"></span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 gap-lg">
+                  <div class="input-group">
+                    <label class="label" for="membershipType"
+                      >Membership Type</label
+                    >
+                    <select
+                      class="form-select"
+                      id="membershipType"
+                      name="membershipType"
+                    >
+                      <option value="basic">Basic</option>
+                      <option value="premium">Premium</option>
+                    </select>
+                    <span class="error-message" id="membershipType-error"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-2">
+                <button class="btn btn-primary" type="submit">Create User</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <script src="./assets/js/admin.js" type="module"></script>
+    </body>
+</html>
