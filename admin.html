@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>GymMaster | Dashboard</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <link href="./assets/css/utilities.css" rel="stylesheet" />
+    <link href="./assets/css/modules/table.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="header shadow">
+      <div class="logo_container">
+        <a href="/">
+          <img
+            alt="GymMaster"
+            class="logo mx-auto img-fluid"
+            src="./assets/img/logo.png"
+          />
+        </a>
+      </div>
+      <div></div>
+    </header>
+
+    <main class="main" role="main">
+      <section class="p-5" style="background-color: #f4f4f3">
+        <div class="container">
+          <div class="grid grid-cols-1 mb-2">
+            <h1>Welcome, Administrator!</h1>
+            <div class="filter-wrapper">
+              <div class="filter-search">
+                <input
+                  class="form-control"
+                  placeholder="Search here..."
+                  type="text"
+                />
+              </div>
+              <div class="table-filter">
+                <select
+                  class="form-control"
+                  id="filterMemberShip"
+                  name="memberShipStatus"
+                >
+                  <option value="active">Active</option>
+                  <option value="expired">Expired</option>
+                </select>
+                <button class="btn btn-primary w-full" id="userModalTrigger">
+                  Add User
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1">
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Membership</th>
+                    <th>Referral Code</th>
+                    <th>Last Renew</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="10">
+                      <div class="text-center">No Records Found</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john.doe@example.com</td>
+                    <td>johndoe</td>
+                    <td>Premium</td>
+                    <td>REF12345</td>
+                    <td>01-11-2024</td>
+                    <td>
+                      <div class="table-action">
+                        <button class="btn btn-primary view-btn">View</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Jane</td>
+                    <td>Smith</td>
+                    <td>jane.smith@example.com</td>
+                    <td>janesmith</td>
+                    <td>Basic</td>
+                    <td>REF67890</td>
+                    <td>05-10-2024</td>
+                    <td>
+                      <div class="table-action">
+                        <button class="btn btn-primary view-btn">View</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Michael</td>
+                    <td>Johnson</td>
+                    <td>michael.johnson@example.com</td>
+                    <td>mjohnson</td>
+                    <td>Premium</td>
+                    <td>REF11223</td>
+                    <td>12-10-2024</td>
+                    <td>
+                      <div class="table-action">
+                        <button class="btn btn-primary view-btn">View</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Emily</td>
+                    <td>Brown</td>
+                    <td>emily.brown@example.com</td>
+                    <td>ebrown</td>
+                    <td>Basic</td>
+                    <td>REF33445</td>
+                    <td>20-10-2024</td>
+                    <td>
+                      <div class="table-action">
+                        <button class="btn btn-primary view-btn">View</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Chris</td>
+                    <td>Davis</td>
+                    <td>chris.davis@example.com</td>
+                    <td>cdavis</td>
+                    <td>Premium</td>
+                    <td>REF55667</td>
+                    <td>25-10-2024</td>
+                    <td>
+                      <div class="table-action">
+                        <button class="btn btn-primary view-btn">View</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>Sarah</td>
+                    <td>Miller</td>
+                    <td>sarah.miller@example.com</td>
+                    <td>smiller</td>
+                    <td>Basic</td>
+                    <td>REF77889</td>
+                    <td>28-10-2024</td>
+                    <td>
+                      <div class="table-action">
+                        <button class="btn btn-primary view-btn">View</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>David</td>
+                    <td>Wilson</td>
+                    <td>david.wilson@example.com</td>
+                    <td>dwilson</td>
+                    <td>Premium</td>
+                    <td>REF99001</td>
+                    <td>30-10-2024</td>
+                    <td>
+                      <div class="table-action">
+                        <button class="btn btn-primary view-btn">View</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td>Anna</td>
+                    <td>Moore</td>
+                    <td>anna.moore@example.com</td>
+                    <td>amoore</td>
+                    <td>Basic</td>
+                    <td>REF22334</td>
+                    <td>10-10-2024</td>
+                    <td>
+                      <div class="table-action">
+                        <button class="btn btn-primary view-btn">View</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>James</td>
+                    <td>Taylor</td>
+                    <td>james.taylor@example.com</td>
+                    <td>jtaylor</td>
+                    <td>Premium</td>
+                    <td>REF44556</td>
+                    <td>18-10-2024</td>
+                    <td>
+                      <div class="table-action">
+                        <button class="btn btn-primary view-btn">View</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td>Jessica</td>
+                    <td>Anderson</td>
+                    <td>jessica.anderson@example.com</td>
+                    <td>janderson</td>
+                    <td>Basic</td>
+                    <td>REF66778</td>
+                    <td>15-10-2024</td>
+                    <td>
+                      <div class="table-action">
+                        <button class="btn btn-primary view-btn">View</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+   
