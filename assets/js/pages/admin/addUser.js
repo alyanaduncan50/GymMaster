@@ -1,4 +1,4 @@
-import Modal from "./utils/modal.js";
+import Modal from "../../utils/modal.js";
 
 export const AddUser = () => {
   const userModal = new Modal("userModal");
@@ -10,6 +10,7 @@ export const AddUser = () => {
 
   const form = document.getElementById("addUserForm");
   const successMessage = document.getElementById("successMessage");
+  const errorMessage = document.getElementById("errorMessage");
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -79,32 +80,49 @@ export const AddUser = () => {
       email,
       newUsername,
       newPassword,
+      confirmPassword,
       membershipType,
     };
 
     console.log("Validated Data:", data);
 
-    fetch("/add-user", {
+    fetch("api/addUser.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
-      .then(() => {
-        successMessage.style.display = "block";
-        setTimeout(() => {
-          successMessage.style.display = "none";
-          form.reset();
-          userModal.hide();
-        }, 2000);
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.success) {
+          console.log("User added successfully:", data.message);
+          successMessage.textContent = data.message; // Display the success message from the server
+          successMessage.style.display = "block";
+          setTimeout(() => {
+            successMessage.style.display = "none";
+            form.reset();
+            userModal.hide();
+          }, 2000);
+        } else {
+          console.error("Error adding user:", data.message);
+          errorMessage.textContent = data.message; // Display the error message from the server
+          errorMessage.style.display = "block";
+          setTimeout(() => {
+            errorMessage.style.display = "none";
+          }, 2000);
+        }
       })
       .catch((error) => {
-        console.error("Error adding user:", error);
-        successMessage.style.display = "block";
+        console.error("Unexpected error:", error.message);
+        errorMessage.textContent =
+          "An unexpected error occurred. Please try again later.";
+        errorMessage.style.display = "block";
         setTimeout(() => {
-          successMessage.style.display = "none";
-          form.reset();
-          userModal.hide();
+          errorMessage.style.display = "none";
         }, 2000);
       });
 
