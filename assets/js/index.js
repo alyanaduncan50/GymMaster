@@ -1,1 +1,1 @@
-import "./login.js";
+import "./pages/login/login.js";
