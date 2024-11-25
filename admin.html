@@ -33,7 +33,7 @@
       <section class="p-5" style="background-color: #f4f4f3">
         <div class="container">
           <div class="grid grid-cols-1 mb-2">
-            <h1>Welcome, Administrator!</h1>
+            <h1>Administrator Dashboard</h1>
             <div class="filter-wrapper">
               <div class="filter-search">
                 <input
@@ -354,6 +354,71 @@
           </div>
         </div>
       </div>
+
+       <!-- Edit Membership Modal -->
+    <div class="modal-backdrop" id="viewModal" style="display: none">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>View User</h2>
+          <button class="close close-modal">&times;</button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div class="grid grid-rows-1 gap-lg">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td><strong>First Name</strong></td>
+                    <td id="editFirstName"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Last Name</strong></td>
+                    <td id="editLastName"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Email</strong></td>
+                    <td id="editEmail"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Username</strong></td>
+                    <td id="editUsername"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Expiry Date</strong></td>
+                    <td id="editLastRenew"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="input-group">
+                <label class="label" for="editMembership">Membership</label>
+                <select class="form-select" id="editMembership">
+                  <option value="Basic">Basic</option>
+                  <option value="Premium">Premium</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="flex items-center justify-center gap-md">
+              <button
+                class="btn btn-primary"
+                id="renewMemberShip"
+                type="submit"
+              >
+                Renew Membership
+              </button>
+              <button
+                class="btn btn-danger"
+                id="cancelMemberShip"
+                type="submit"
+              >
+                Cancel Membership
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 
       <script src="./assets/js/admin.js" type="module"></script>
     </body>
