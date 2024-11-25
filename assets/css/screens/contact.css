@@ -30,7 +30,7 @@
 .contact .content h2 {
     font-size: 36px;
     font-weight: 500;
-    color: #000000;
+    color: #ffffff;
 }
 
 .contact .content p {
@@ -67,6 +67,7 @@
     min-width: 60px;
     height: 60px;
     background: #fff;
+    color: #17726d;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,13 +82,13 @@
     font-size: 16px;
     color: #000000;
     flex-direction: column; /* Stack text vertically */
-    font-weight: 300;
+    font-weight: 400;
 }
 
 /* Heading inside each info box (address, phone, email) */
 .container .contactInfo .box .text h3 {
-    font-weight: 500;
-    color: #1f89b7; 
+    font-weight: bold;
+    color: #f3f3f3; 
 }
 
 /* Form section for sending messages */
@@ -101,7 +102,7 @@
 /* Heading inside the contact form */
 .contactForm h2 {
     font-size: 30px;
-    color: #333;
+    color: #000000;
     font-weight: 500;
 }
 
@@ -150,7 +151,7 @@
 /* Styling for submit button */
 .contactForm .inputBox input[type="submit"] {
     width: 100px; /* Width of the submit button */
-    background: #1f89b7; 
+    background: #17726d; 
     color: #fff; /* White text */
     border: none;
     cursor: pointer; /* Cursor changes to pointer */
