@@ -4,6 +4,9 @@ const editMemberShip = document.getElementById("editMembership");
 const renewButton = document.getElementById("renewMemberShip");
 const lastRenewField = document.getElementById("editLastRenew");
 
+const editSuccessMessage = document.getElementById("editSuccessMessage");
+const editErrorMessage = document.getElementById("editErrorMessage");
+
 function checkLastRenew() {
   const lastRenewValue = lastRenewField.textContent.trim();
   console.log("lastRenewValue ", lastRenewValue);
@@ -80,12 +83,15 @@ export const Membership = () => {
       const email = document.getElementById("editEmail").textContent;
       const membershipType = document.getElementById("editMembership").value;
 
+      const token = localStorage.getItem("authToken");
+
       // Only proceed if Renew button is enabled (i.e., membership is expired)
       if (!renewButton.disabled) {
         fetch("api/renew_membership.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Add token
           },
           body: JSON.stringify({
             userName: userName,
@@ -97,17 +103,49 @@ export const Membership = () => {
           .then((result) => {
             console.log(result);
             if (result.success) {
-              alert("Membership renewed successfully!");
-              // You can update the UI or reload the data after renewal
-              viewModal.hide(); // Close the modal after successful renewal
-              // Optionally, you can refresh the user table here
+              const tableBody = document.querySelector(".table tbody");
+              const rows = Array.from(tableBody.querySelectorAll("tr")); // Get all rows
+              const row = rows.find(
+                (tr) =>
+                  tr.querySelector("td:nth-child(5)").textContent.trim() ===
+                  userName
+              );
+              if (row) {
+                row.querySelector("td:nth-child(6)").textContent =
+                  membershipType;
+                row.querySelector("td:nth-child(8)").textContent =
+                  result.renewalDate;
+              }
+              console.log("Membership renewed successfully!");
+              editSuccessMessage.textContent = result.message;
+              editSuccessMessage.style.display = "block";
+              setTimeout(() => {
+                editSuccessMessage.style.display = "none";
+                //form.reset();
+                viewModal.hide();
+              }, 2000);
+
+              //viewModal.hide();
             } else {
-              alert("Error renewing membership: " + result.message);
+              console.error("Error renewing membership: " + result.message);
+              editErrorMessage.textContent = result.message; // Display the error message from the server
+              editErrorMessage.style.display = "block";
+              setTimeout(() => {
+                editErrorMessage.style.display = "none";
+                viewModal.hide();
+              }, 2000);
             }
           })
           .catch((error) => {
-            console.error("Error renewing membership:", error);
-            alert("An error occurred while renewing the membership.");
+            console.error(
+              "An error occurred while renewing the membership:",
+              error
+            );
+            editErrorMessage.textContent = error; // Display the error message from the server
+            editErrorMessage.style.display = "block";
+            setTimeout(() => {
+              editErrorMessage.style.display = "none";
+            }, 2000);
           });
       }
       // viewModal.hide();
@@ -117,18 +155,19 @@ export const Membership = () => {
   document
     .getElementById("cancelMemberShip")
     .addEventListener("click", (event) => {
-      //alert("here");
       event.preventDefault();
 
       const username = document.getElementById("editUsername").textContent;
       const email = document.getElementById("editEmail").textContent;
 
-      console.log(`Membership cancelled for ${username}.`);
+      // Token from localStorage
+      const token = localStorage.getItem("authToken");
 
       fetch("api/cancel_membership.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           username: username,
@@ -139,15 +178,47 @@ export const Membership = () => {
         .then((result) => {
           console.log(result);
           if (result.success) {
-            alert("Membership cancelled successfully!");
-            viewModal.hide(); // Close the modal after cancellation
+            // Remove the row from the table
+            const tableBody = document.querySelector(".table tbody");
+            const row = Array.from(tableBody.querySelectorAll("tr")).find(
+              (tr) =>
+                tr
+                  .querySelector("td:nth-child(5)") // Target the 5th username column
+                  .textContent.trim() === username // Compare with the username
+            );
+
+            if (row) {
+              row.remove();
+            }
+            console.log("Membership cancelled successfully!");
+            editSuccessMessage.textContent = result.message;
+            editSuccessMessage.style.display = "block";
+            setTimeout(() => {
+              editSuccessMessage.style.display = "none";
+              viewModal.hide();
+            }, 2000);
+            //viewModal.hide(); // Close the modal after cancellation
           } else {
-            alert("Error canceling membership: " + result.message);
+            editErrorMessage.textContent = result.message;
+            editErrorMessage.style.display = "block";
+            setTimeout(() => {
+              editErrorMessage.style.display = "none";
+              viewModal.hide();
+            }, 2000);
+            console.log("Error canceling membership: " + result.message);
           }
         })
         .catch((error) => {
-          console.error("Error canceling membership:", error);
-          alert("An error occurred while canceling the membership.");
+          console.error(
+            "An error occurred while canceling the membership ",
+            error
+          );
+          editErrorMessage.textContent = error;
+          editErrorMessage.style.display = "block";
+          setTimeout(() => {
+            editErrorMessage.style.display = "none";
+            viewModal.hide();
+          }, 2000);
         });
 
       // viewModal.hide();
