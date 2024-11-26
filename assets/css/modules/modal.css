@@ -30,14 +30,15 @@
 }
 
 .modal .close {
-    border: 1px solid #ccc;
-    color: black;
+    border: 0;
+    background-color: rgba(20, 110, 105, 0.12);
+    color: #80b2af;
     outline: none;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 35px;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 20px;
+    border-radius: 50%;
+    font-size: 16px;
     transition: all 0.1s ease-in-out;
 }
 .modal .close:hover {
