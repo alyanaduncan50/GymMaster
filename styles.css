@@ -1,0 +1,130 @@
+h1{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size:40px;
+  margin:10px;
+  padding:10px;
+  color: black;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around; /* Distribute items evenly */
+    gap: 20px; /* Space between items */
+    
+}
+/* Title styles */
+.container-item h3 {
+    margin: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    
+}
+
+.container-item{
+    width: 300px;
+    height: 300px;
+    background-image: url('background.jpg');
+    background-position: center;
+    background-color: #dfdfdf;
+    border-radius: 15px;
+    background-color: rgba(52, 152, 219, 0.8)
+}
+
+.container-item-1 {
+    background-color:#dfdfdf;
+}
+
+.container-item-2 {
+    background-color: #dfdfdf;
+}
+
+.container-item-3 {
+    background-color: #dfdfdf;
+}
+
+.container-item-4 {
+    background-color: #dfdfdf;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+}
+
+
+body{
+    background-color: white;
+
+}
+
+/* Style the main menu container */
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 16px;
+    background-color: #333;
+    text-align: right;
+    
+}
+
+/* Style the menu list items */
+ul li{
+    display: inline-block;
+    position: relative;
+}
+
+/* Style the anchor tags inside the list items */
+ul li a{
+    display: block;
+    padding: 20px 25px;
+    font-size: 16px;
+    color:#FFF;
+    text-decoration: none;
+    text-align: right;
+}
+
+/* Style the dropdown (submenu) items */
+ul li ul.main {
+    display: none;
+    position: absolute;
+    right: 15%;
+    top: 100%;
+    background: #333;
+    min-width: 200px; /* Minimum width for the dropdown */
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+/* Style the individual submenu items */
+ul li ul.main li{
+    display: block;
+    background:#333;
+    margin: 0;
+
+}
+/* Style links inside the submenu */
+ul li ul.main a{
+    padding: 15px 25px;
+    font-size: 14px; /* Slightly smaller font for submenu items */
+    color: #FFF;
+    text-decoration: none;
+    text-align: left;
+}
+
+/* Hover effect for main menu links */
+ul li a:hover{
+    background: #100;
+}
+
+ul li:hover ul.main{
+    display: block;
+}
+
+
+
+    
