@@ -19,57 +19,44 @@ try {
         http_response_code(401);
         $response['success'] = false;
         $response['code'] = '401';
-        $response['redirect_url'] = '/gym/login.html';
+        $response['redirect_url'] = '/GymMaster/login.html';
         $response['message'] = 'Unauthorized: Invalid or missing token.';
         echo json_encode($response);
         exit;
     }
-    // Initialize variables
-    $search = trim($_GET['search'] ?? '');
-    $filterMembership = trim($_GET['filterMembership'] ?? 'all');
 
-    // Build the SQL query
-    $query = "SELECT id, first_name, last_name, email, username, membership_type, referral_code, last_renewed FROM users WHERE 1=1 AND username != 'admin'";
+    $query = "SELECT first_name, last_name, membership_type, referral_code, last_renewed 
+    FROM users 
+    WHERE username = :username LIMIT 1";
 
-    // Parameters for prepared statement
-    $params = [];
-
-    // Add search condition if provided
-    if (!empty($search)) {
-        $query .= " AND (first_name LIKE ? OR last_name LIKE ? OR email LIKE ?)";
-        $searchTerm = "%$search%";
-        $params[] = $searchTerm;
-        $params[] = $searchTerm;
-        $params[] = $searchTerm;
-    }
-
-    //process alphabetically by first name, then last name
-    $query .= " ORDER BY first_name ASC, last_name ASC";
-
-    // Prepare and execute the statement
+    $username = $_SESSION['user']['username'];
     $stmt = $pdo->prepare($query);
-    $stmt->execute($params);
+    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->execute();
 
-    // Fetch results
-    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // Process membership filters and determine Active/Expired
-    $filteredUsers = [];
-    foreach ($users as &$user) {
-        $user['status'] = isMembershipExpired($user['last_renewed']) ? 'Expired' : 'Active';   
-
-        // Filter by membership status only if not "all"
-        if ($filterMembership !== 'all' && strtolower($user['status']) !== strtolower($filterMembership)) {
-            continue;
-        }
-
-        $filteredUsers[] = $user;
+    // Check if the user exists
+    if ($stmt->rowCount() === 0) {
+        http_response_code(404);
+        echo json_encode([
+            'success' => false,
+            'message' => 'User not found.',
+        ]);
+        exit;
     }
+
+    // Fetch user data
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $lastRenewedDate = new DateTime($user['last_renewed']);
+    $expiryDate = $lastRenewedDate->add(new DateInterval('P30D')); // Add 30 days
+
+    // Add expiry date to the user data
+    $user['expiry_date'] = $expiryDate->format('Y-m-d');
 
     // Return JSON response
     echo json_encode([
         'success' => true,
-        'data' => $filteredUsers,
+        'data' => $user,
     ]);
 } catch (PDOException $e) {
     // Handle errors

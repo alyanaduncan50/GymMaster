@@ -9,16 +9,14 @@ const editErrorMessage = document.getElementById("editErrorMessage");
 
 function checkLastRenew() {
   const lastRenewValue = lastRenewField.textContent.trim();
-  console.log("lastRenewValue ", lastRenewValue);
   // Check if lastRenewValue is empty or not in a valid format
   if (!lastRenewValue || !/^\d{4}-\d{2}-\d{2}$/.test(lastRenewValue)) {
     console.error("Invalid or missing date:", lastRenewValue);
     renewButton.disabled = true;
     editMemberShip.disabled = true;
-    return; // Exit function if date is invalid or empty
+    return;
   }
 
-  // Parse the lastRenew date manually using Date.parse() or Date constructor
   const lastRenewDate = new Date(lastRenewValue); // Make sure it's in the correct format YYYY-MM-DD
   if (isNaN(lastRenewDate.getTime())) {
     console.error("Invalid date:", lastRenewValue);
@@ -28,11 +26,8 @@ function checkLastRenew() {
   }
 
   const currentDate = new Date();
-  // Calculate the difference in days
   const differenceInTime = currentDate.getTime() - lastRenewDate.getTime();
   const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-
-  console.log("differenceInDays ", differenceInDays);
   renewButton.disabled = differenceInDays < 30;
   editMemberShip.disabled = differenceInDays < 30;
 }
@@ -101,7 +96,6 @@ export const Membership = () => {
         })
           .then((response) => response.json()) // Convert to JSON
           .then((result) => {
-            console.log(result);
             if (result.success) {
               const tableBody = document.querySelector(".table tbody");
               const rows = Array.from(tableBody.querySelectorAll("tr")); // Get all rows
@@ -116,7 +110,7 @@ export const Membership = () => {
                 row.querySelector("td:nth-child(8)").textContent =
                   result.renewalDate;
               }
-              console.log("Membership renewed successfully!");
+              console.log(result.message);
               editSuccessMessage.textContent = result.message;
               editSuccessMessage.style.display = "block";
               setTimeout(() => {
@@ -148,7 +142,6 @@ export const Membership = () => {
             }, 2000);
           });
       }
-      // viewModal.hide();
     });
 
   // Cancel Membership
@@ -176,7 +169,6 @@ export const Membership = () => {
       })
         .then((response) => response.json()) // Convert to JSON
         .then((result) => {
-          console.log(result);
           if (result.success) {
             // Remove the row from the table
             const tableBody = document.querySelector(".table tbody");
@@ -190,14 +182,13 @@ export const Membership = () => {
             if (row) {
               row.remove();
             }
-            console.log("Membership cancelled successfully!");
+            console.log(result.message);
             editSuccessMessage.textContent = result.message;
             editSuccessMessage.style.display = "block";
             setTimeout(() => {
               editSuccessMessage.style.display = "none";
               viewModal.hide();
             }, 2000);
-            //viewModal.hide(); // Close the modal after cancellation
           } else {
             editErrorMessage.textContent = result.message;
             editErrorMessage.style.display = "block";

@@ -1,13 +1,20 @@
+import { BASE_URL } from "../../config.js";
 import Modal from "../../utils/modal.js";
 import "../booking/booking.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const getReferralBtn = document.getElementById("getReferralBtn");
+
+  getReferralBtn.addEventListener("click", () => {
+    window.location.href = `${BASE_URL}referral.html`;
+  });
+
   const apiEndpoint = "api/get_user_data.php";
   const token = localStorage.getItem("authToken");
 
   // If no token, stop further execution and show an alert or redirect
   if (!token) {
-    window.location.href = `${window.location.origin}/gym/login.html`; // Redirect to login page
+    window.location.href = `${BASE_URL}login.html`; // Redirect to login page
     return; // Stop further execution
   }
 
@@ -31,8 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ).textContent = `Welcome, ${result.data.first_name} ${result.data.last_name}!`;
       document.getElementById("membershipType").textContent =
         result.data.membership_type || "N/A";
-      document.getElementById("referralCode").textContent =
-        result.data.referral_code || "N/A";
       document.getElementById("expiryDate").textContent =
         result.data.expiry_date || "N/A";
     })
@@ -40,38 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error loading user data:", error);
       alert("Failed to load user data. Please try again later.");
     });
-
-  document.querySelectorAll(".copy-btn").forEach((button) => {
-    button.addEventListener("click", async () => {
-      const referralCodeElement = button
-        .closest(".content")
-        .querySelector(".title");
-      const referralCode = referralCodeElement.textContent.trim();
-      const icon = button.querySelector(".icon-copy");
-
-      try {
-        await navigator.clipboard.writeText(referralCode);
-
-        icon.classList.remove("fa-regular", "fa-copy");
-        icon.classList.add("fa-solid", "fa-check");
-
-        setTimeout(() => {
-          icon.classList.remove("fa-solid", "fa-check");
-          icon.classList.add("fa-regular", "fa-copy");
-        }, 500);
-      } catch (err) {
-        console.error("Failed to copy: ", err);
-
-        icon.classList.remove("fa-regular", "fa-copy");
-        icon.classList.add("fa-solid", "fa-exclamation");
-
-        setTimeout(() => {
-          icon.classList.remove("fa-solid", "fa-exclamation");
-          icon.classList.add("fa-regular", "fa-copy");
-        }, 500);
-      }
-    });
-  });
 
   // Feedback form modal
   const feedbackModal = new Modal("feedbackModal");
@@ -92,15 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Check if auth token exists in localStorage
     if (!token) {
-      alert("You are not logged in.");
-      window.location.href = "login.html";
+      window.location.href = `${BASE_URL}login.html`;
       return;
     }
 
     const formData = new FormData(feedbackForm);
     const feedbackData = Object.fromEntries(formData.entries());
-    console.log("User Feedback:", feedbackData);
-    console.log("User token:", token);
+    //console.log("User Feedback:", feedbackData);
 
     // Make an API call without sending form data
     fetch("api/send_feedback_email.php", {

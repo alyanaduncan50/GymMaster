@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link href="./assets/css/style.css" rel="stylesheet" />
+    <link href="./assets/css/user.css" rel="stylesheet" />
     <link href="./assets/css/utilities.css" rel="stylesheet" />
     <link href="./assets/css/modules/modal.css" rel="stylesheet" />
     <link href="./assets/css/modules/table.css" rel="stylesheet" />
@@ -38,48 +39,42 @@
     </header>
 
     <main class="main" role="main">
-        <section class="p-5">
-          <div class="container">
-            <div class="grid grid-cols-1 mb-2">
-              <div class="welcome">
-                <h1 id="welcomeMessage" class="title">Welcome, John Doe!</h1>
+      <section class="p-5">
+        <div class="container">
+          <div class="start">
+            <h1 id="welcomeMessage" class="title">Welcome, John Doe!</h1>
+          </div>
+
+          <div class="grid grid-cols-1">
+            <div class="plan-info shadow">
+              <div class="content">
+                <span class="mType">Membership</span>
+                <h3 class="title" id="membershipType">Premium</h3>
               </div>
-            </div>
-      
-            <!-- Membership Info Section -->
-            <div class="grid grid-cols-1"  style="display: grid; place-items: center; width: 100%; max-width: 500px; margin: 0 auto;">
-              <div class="plan-info shadow">
-                <div class="content">
-                  <span class="mType">Membership Type</span>
-                  <h3 class="title" id="membershipType">Premium</h3>
-                </div>
-                <div class="content">
-                  <span class="mType">Expiry Date</span>
-                  <h3 class="title" id="expiryDate">02/12/2024</h3>
-                </div>
-                <div class="content rContent">
-                  <div class="flex justify-between items-center gap-sm">
-                    <button class="mType" style="border-color:transparent;width:150px; height:30px">Get Referral Code</button>
-                  </div>
-                </div>
+
+              <div class="content">
+                <span class="mType">Expiry Date</span>
+                <h3 class="title" id="expiryDate">02/12/2024</h3>
               </div>
-            </div>
-            
-            <div class="grid grid-cols-1 mt-4">
-              <div class="flex justify-center items-center gap-4" style="padding: 40px;">
-                <button class="btn btn-feedback" id="feedbackModalTrigger">
-                  Submit Feedback
-                </button>
-                <button class="btn btn-primary" id="bookSessionModalTrigger" style="margin-left: 20px;">
-                  Book Training Session
-                </button>
-              </div>
+              <a class="btn btn-referral" id="getReferralBtn">
+                Get Referral Code
+              </a>
             </div>
           </div>
-        </section>
-      </main>
-      
-      
+
+          <div class="centerbtn">
+            <button class="btn btn-feedback" id="feedbackModalTrigger">
+              Submit Feedback
+            </button>
+
+            <button class="btn btn-primary ml" id="bookSessionModalTrigger">
+              Book Training Session
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
     <!--Book Session Modal -->
     <div class="modal-backdrop" id="bookSessionModal">
       <div class="modal modal-booking">
@@ -313,6 +308,6 @@
     </div>
 
     <script src="assets/js/pages/user/user.js" type="module"></script>
-    <script src="assets/js/pages/admin/logout.js"></script>
+    <script src="assets/js/pages/admin/logout.js" type="module"></script>
   </body>
 </html>

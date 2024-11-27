@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/screens/referral.css">
-    <title>Referral Page</title>
-</head>
-<body>
-    <div class="box">
-        <div class="ellipse">
-            <p>Get you $500 off membership payments or renewal</p>
-            <img src="assets/img/referral_logo.png" alt="Gym Master Logo" />
-        </div>
-        <h6>Referral Code</h6>
-        <span class="title" id="referralCode">REF12345</span>
-        <img id="gift_box" src="assets/img/gift_box.jpg" alt="Gift Box" />
-        <button>Save Code & Continue</button>
-    </div>
-</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/screens/referral.css" />
 
+    <link rel="stylesheet" href="assets/css/user.css" />
+    <title>Referral Page</title>
+  </head>
+  <body>
+    <div></div>
+    <div class="box">
+      <div class="ellipse">
+        <p>Get you $500 off membership payments or renewal</p>
+        <img src="assets/img/referral_logo.png" alt="Gym Master Logo" />
+      </div>
+      <h6>Referral Code</h6>
+      <div class="centerlogo">
+        <img id="gift_box" src="assets/img/gift_box.png" alt="Gift Box" />
+        <span class="title" id="referralCode">REF12345</span>
+      </div>
+      <button>Save Code & Continue</button>
+
+      <a class="linkbtn" href="javascript:history.back()" id="back-btn"
+        >Go Back</a
+      >
+    </div>
+  </body>
+</html>
+<script src="assets/js/pages/user/referral.js" type="module"></script>

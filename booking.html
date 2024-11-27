@@ -1,98 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Book Training Sessions</title>
-    <link rel="stylesheet" href="Styles1.css" />
-    <script src="book.js"></script>
-</head>
-<body>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>GymMaster | Book Slot</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <link href="./assets/css/utilities.css" rel="stylesheet" />
+    <link href="assets/css/screens/booking.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="header shadow">
+      <div class="logo_container">
+        <a href="/">
+          <img
+            alt="GymMaster"
+            class="logo mx-auto img-fluid"
+            src="./assets/img/logo.png"
+          />
+        </a>
+      </div>
+    </header>
 
-<h1>Book Session</h1>
-<div class="form">
-    <form action="/submit_form" method="POST">
-
-        <div class="form-group">
-            <label>Title:</label>
-            <input type="radio" id="Miss" name="title" value="Miss">
-            <label for="miss">Miss</label>
-            <input type="radio" id="Mrs" name="title" value="Mrs">
-            <label for="mrs">Mrs</label>
-            <input type="radio" id="Mr" name="title" value="Mr">
-            <label for="mr">Mr</label>
+    <main class="main" role="main">
+      <section class="p-5">
+        <div class="container">
+          <div class="grid grid-cols-1 mb-5">
+            <div class="flex items-center justify-between gap-sm">
+              <h1>Book Training Session</h1>
+              <div>
+                <button class="btn btn-primary w-full" id="back-btn">
+                  Back
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="mb-5 booking-select-date">
+            <input
+              class="form-control shadow"
+              id="bookingSlotDate"
+              type="date"
+            />
+          </div>
+          <div
+            class="alert alert-success mb-5"
+            id="success"
+            style="display: none"
+          ></div>
+          <div
+            class="alert alert-danger mb-5"
+            id="error"
+            style="display: none"
+          ></div>
+          <div class="grid grid-cols-1">
+            <div class="booking-slot-wrapper">
+              <div class="booking-slot shadow">
+                <span class="icon fa-regular fa-clock"></span>
+                <span class="time">8:00 AM</span>
+              </div>
+              <div class="booking-slot shadow">
+                <span class="icon fa-regular fa-clock"></span>
+                <span class="time">9:00 AM</span>
+              </div>
+              <div class="booking-slot shadow">
+                <span class="icon fa-regular fa-clock"></span>
+                <span class="time">10:00 AM</span>
+              </div>
+              <div class="booking-slot shadow">
+                <span class="icon fa-regular fa-clock"></span>
+                <span class="time">11:00 AM</span>
+              </div>
+              <div class="booking-slot shadow">
+                <span class="icon fa-regular fa-clock"></span>
+                <span class="time">12:00 PM</span>
+              </div>
+              <div class="booking-slot shadow">
+                <span class="icon fa-regular fa-clock"></span>
+                <span class="time">01:00 PM</span>
+              </div>
+              <div class="booking-slot shadow">
+                <span class="icon fa-regular fa-clock"></span>
+                <span class="time">02:00 PM</span>
+              </div>
+              <div class="booking-slot shadow">
+                <span class="icon fa-regular fa-clock"></span>
+                <span class="time">03:00 PM</span>
+              </div>
+              <div class="booking-slot shadow">
+                <span class="icon fa-regular fa-clock"></span>
+                <span class="time">04:00 PM</span>
+              </div>
+              <div class="booking-slot shadow">
+                <span class="icon fa-regular fa-clock"></span>
+                <span class="time">05:00 PM</span>
+              </div>
+              <div class="booking-slot shadow">
+                <span class="icon fa-regular fa-clock"></span>
+                <span class="time">06:00 PM</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+    </main>
 
-        <div class="form-group">
-            <label for="fullName">Full Name:</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
-        </div>
-
-       
-        <div class="form-group">
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-        </div>
-
-        <div class="form-group">
-            <label for="trainer">Trainer's name:</label>
-            <input type="trainer" id="trainer" name="trainer" placeholder="Enter Trainer's name" required>
-        </div>
-
-        <div class="form-group">
-            <label for="day">Select Day</label>
-            <select id="day" name="day" required>
-                <option value="Monday">Monday</option>
-                <option value="Tuesday">Tuesday</option>
-                <option value="Wednesday">Wednesday</option>
-                <option value="Thursday">Thursday</option>
-                <option value="Friday">Friday</option>
-                <option value="Saturday">Saturday</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="time">Select Time</label>
-            <select id="time" name="time" required>
-                <option value="8-9am">8-9am</option>
-                <option value="10-11am">10-11am</option>
-                <option value="12-1pm">12-1pm</option>
-                <option value="2-3pm">2-3pm</option>
-                <option value="4-5pm">4-5pm</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="Number">Phone Number:</label>
-            <input type="number" id="Phone Number" name="Phone Number" placeholder="Enter your Phone Number" required>
-        </div>
-       
-        <div class="form-group">
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" placeholder="Enter your age" required>
-        </div>
-
-        <div class="form-group">
-            <label>Gender:</label>
-            <input type="radio" id="male" name="gender" value="Male">
-            <label for="male">Male</label>
-            <input type="radio" id="female" name="gender" value="Female">
-            <label for="female">Female</label>
-        </div>
-
-        <div class="form-group">
-            <button type="submit" class="submit-btn">Submit</button>
-        </div>
-</div>
-
-
-
-
-
-
-
-
-    
-
-</body>
+    <script src="assets/js/pages/booking/booking.js" type="module"></script>
+  </body>
+</html>

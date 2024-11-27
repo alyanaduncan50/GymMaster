@@ -116,8 +116,6 @@ export const AddUser = () => {
     };
 
     const token = localStorage.getItem("authToken");
-    // console.log("token", token);
-    console.log("Validated Data:", data);
 
     fetch("api/addUser.php", {
       method: "POST",

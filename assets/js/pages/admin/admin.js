@@ -1,5 +1,6 @@
 import { AddUser } from "./addUser.js";
 import { Membership } from "./membership.js";
+import { BASE_URL } from "../../config.js";
 
 // Fetch users and render table
 async function fetchUsers() {
@@ -16,11 +17,11 @@ async function fetchUsers() {
 
     // If no token, stop further execution and show an alert or redirect
     if (!token) {
-      window.location.href = `${window.location.origin}/gym/login.html`; // Redirect to login page
+      window.location.href = `${BASE_URL}login.html`; // Redirect to login page
       return; // Stop further execution
     }
 
-    const baseUrl = `${window.location.origin}/gym/api/get_users.php`;
+    const baseUrl = `${BASE_URL}api/get_users.php`;
 
     const url = new URL(baseUrl);
 
@@ -37,13 +38,11 @@ async function fetchUsers() {
     });
 
     const result = await response.json();
-    console.log("result", result);
 
     if (result.success && Array.isArray(result.data)) {
       renderTable(result.data, tableBody);
     } else if (result.code && result.code === "401") {
-      alert("Unauthorized. Redirecting to login.");
-      window.location.href = result.redirect_url || "/gym/login.html";
+      window.location.href = result.redirect_url || `${BASE_URL}login.html`;
     } else {
       console.error(
         "Error fetching user data:",

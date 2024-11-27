@@ -27,10 +27,26 @@ function sendEmail($to, $subject, $message)
         $mail->Subject = $subject;
         $mail->Body    = $message;
 
-        // Send email
-        $mail->send();       
-    } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        // Send email           
+        if ($mail->send()) {
+            return true; // Email sent successfully
+        } else {
+            return false; // Email failed to send
+        }    
+    } catch (Exception $e) {       
+        $errorMessage = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}\n";
+        $errorMessage .= "Exception: {$e->getMessage()}\n";
+        $errorMessage .= "Date: " . date('Y-m-d H:i:s') . "\n\n";
+
+        $logDir = __DIR__ . '/log';
+        // Ensure the directory exists
+        if (!is_dir($logDir)) {
+            mkdir($logDir, 0755, true); // Create the 'log' directory with appropriate permissions
+        }
+        $logFile = $logDir . '/email_errors.log';
+        error_log($errorMessage, 3,  $logFile);
+
+        return false; 
     }
 }
 ?>
