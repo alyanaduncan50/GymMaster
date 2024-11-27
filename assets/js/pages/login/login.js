@@ -80,4 +80,37 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => console.error("Error:", error));
   });
+
+  //   Forgot Password Page
+  const forgotPassModal = new Modal("forgotPassModal");
+  const forgotPassModalTrigger = document.getElementById(
+    "forgotPassModalTrigger"
+  );
+
+  forgotPassModalTrigger.addEventListener("click", () => {
+    forgotPassModal.show();
+  });
+
+  const forgotPasswordForm = document.getElementById("forgotPassForm");
+  forgotPasswordForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const emailInput = document.getElementById("email").value.trim();
+
+    if (emailInput) {
+      const successMessage = document.getElementById("successMessage");
+      successMessage.style.display = "block";
+
+      setTimeout(() => {
+        successMessage.style.display = "none";
+        forgotPasswordForm.reset();
+        forgotPassModal.hide();
+      }, 2000);
+      console.log("Captured Email Address:", emailInput);
+    } else {
+      console.log("No email address provided.");
+      const errorMessage = document.getElementById("email-error");
+      errorMessage.textContent = "Email address is required.";
+    }
+  });
 });
