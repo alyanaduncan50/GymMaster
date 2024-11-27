@@ -1,6 +1,7 @@
 <?php
+session_start();
 // Set the content type to JSON
-header('Access-Control-Allow-Origin: *'); // Allow all domains (or specify a domain if required)
+header('Access-Control-Allow-Origin: *'); 
 header('Content-Type: application/json');
 
 // Include the database connection
@@ -9,12 +10,26 @@ require_once '../connection.php';
 require_once '../functions.php';
 
 try {
+    $headers = apache_request_headers();
+    $clientToken = $headers['Authorization'] ?? '';
+    $clientToken = str_replace('Bearer ', '', $clientToken);
+
+    // Check if the session has a valid token
+    if (!isset($_SESSION['token']) || $clientToken !== $_SESSION['token']) {
+        http_response_code(401);
+        $response['success'] = false;
+        $response['code'] = '401';
+        $response['redirect_url'] = '/gym/login.html';
+        $response['message'] = 'Unauthorized: Invalid or missing token.';
+        echo json_encode($response);
+        exit;
+    }
     // Initialize variables
     $search = trim($_GET['search'] ?? '');
     $filterMembership = trim($_GET['filterMembership'] ?? 'all');
 
     // Build the SQL query
-    $query = "SELECT id, first_name, last_name, email, username, membership_type, referral_code, last_renewed FROM users WHERE 1=1";
+    $query = "SELECT id, first_name, last_name, email, username, membership_type, referral_code, last_renewed FROM users WHERE 1=1 AND username != 'admin'";
 
     // Parameters for prepared statement
     $params = [];

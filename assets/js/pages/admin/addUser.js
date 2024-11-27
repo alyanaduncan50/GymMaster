@@ -12,6 +12,37 @@ export const AddUser = () => {
   const successMessage = document.getElementById("successMessage");
   const errorMessage = document.getElementById("errorMessage");
 
+  function addUserToList(user) {
+    const tableBody = document.querySelector(".table tbody");
+
+    const lastRow = tableBody.querySelector("tr:last-child");
+    const lastIndex = lastRow
+      ? parseInt(lastRow.querySelector("td:first-child").textContent, 10) || 0
+      : 0;
+
+    // Calculate the next index
+    const nextIndex = lastIndex + 1;
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${nextIndex}</td>
+        <td>${user.first_name}</td>
+        <td>${user.last_name}</td>
+        <td>${user.email}</td>
+        <td>${user.username}</td>
+        <td>${user.membership_type}</td>
+        <td>${user.referral_code}</td>
+        <td>${user.last_renewed}</td>
+        <td>
+        <div class="table-action">
+          <span class="fa-solid fa-eye btn-view view-btn" data-id="${user.id}"></span>
+        </div>
+      </td>
+    `;
+
+    tableBody.appendChild(row);
+  }
+
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -84,11 +115,16 @@ export const AddUser = () => {
       membershipType,
     };
 
+    const token = localStorage.getItem("authToken");
+    // console.log("token", token);
     console.log("Validated Data:", data);
 
     fetch("api/addUser.php", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify(data),
     })
       .then((response) => {
@@ -99,6 +135,7 @@ export const AddUser = () => {
       })
       .then((data) => {
         if (data.success) {
+          addUserToList(data.newUser);
           console.log("User added successfully:", data.message);
           successMessage.textContent = data.message; // Display the success message from the server
           successMessage.style.display = "block";

@@ -12,6 +12,14 @@ async function fetchUsers() {
 
   try {
     // Construct a valid URL
+    const token = localStorage.getItem("authToken");
+
+    // If no token, stop further execution and show an alert or redirect
+    if (!token) {
+      window.location.href = `${window.location.origin}/gym/login.html`; // Redirect to login page
+      return; // Stop further execution
+    }
+
     const baseUrl = `${window.location.origin}/gym/api/get_users.php`;
 
     const url = new URL(baseUrl);
@@ -21,12 +29,21 @@ async function fetchUsers() {
     if (filterValue) url.searchParams.set("filterMembership", filterValue);
     //console.log(url);
     // Fetch data
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+      },
+    });
+
     const result = await response.json();
-    //console.log("result  ", result);
+    console.log("result", result);
+
     if (result.success && Array.isArray(result.data)) {
-      // console.log("result data ", result.data);
       renderTable(result.data, tableBody);
+    } else if (result.code && result.code === "401") {
+      alert("Unauthorized. Redirecting to login.");
+      window.location.href = result.redirect_url || "/gym/login.html";
     } else {
       console.error(
         "Error fetching user data:",
