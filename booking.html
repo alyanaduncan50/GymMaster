@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Book Training Sessions</title>
+    <link rel="stylesheet" href="Styles1.css" />
+    <script src="book.js"></script>
+</head>
+<body>
+
+<h1>Book Session</h1>
+<div class="form">
+    <form action="/submit_form" method="POST">
+
+        <div class="form-group">
+            <label>Title:</label>
+            <input type="radio" id="Miss" name="title" value="Miss">
+            <label for="miss">Miss</label>
+            <input type="radio" id="Mrs" name="title" value="Mrs">
+            <label for="mrs">Mrs</label>
+            <input type="radio" id="Mr" name="title" value="Mr">
+            <label for="mr">Mr</label>
+        </div>
+
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+        </div>
+
+       
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="trainer">Trainer's name:</label>
+            <input type="trainer" id="trainer" name="trainer" placeholder="Enter Trainer's name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="day">Select Day</label>
+            <select id="day" name="day" required>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="time">Select Time</label>
+            <select id="time" name="time" required>
+                <option value="8-9am">8-9am</option>
+                <option value="10-11am">10-11am</option>
+                <option value="12-1pm">12-1pm</option>
+                <option value="2-3pm">2-3pm</option>
+                <option value="4-5pm">4-5pm</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Number">Phone Number:</label>
+            <input type="number" id="Phone Number" name="Phone Number" placeholder="Enter your Phone Number" required>
+        </div>
+       
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" placeholder="Enter your age" required>
+        </div>
+
+        <div class="form-group">
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="submit-btn">Submit</button>
+        </div>
+</div>
+
+
+
+
+
+
+
+
+    
+
+</body>
