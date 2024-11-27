@@ -1,0 +1,20 @@
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.star-rating input {
+    display: none;
+}
+.star-rating label {
+    font-size: 2rem;
+    color: #b3bbbb;
+    cursor: pointer;
+}
+.star-rating input:checked ~ label {
+    color: var(--primary);
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: var(--primary);
+}

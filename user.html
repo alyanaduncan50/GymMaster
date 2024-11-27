@@ -1,40 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>HOME</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="home.js"></script>
-</head>
-<body>
-    <header>
-        <ul>
-            <li><a href="#">View</a>
-                <ul class="main">
-                    
-                    <li><a href="#">Log out</a></li>
-                </ul>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>GymMaster | Dashboard</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <link href="./assets/css/utilities.css" rel="stylesheet" />
+    <link href="./assets/css/modules/modal.css" rel="stylesheet" />
+    <link href="./assets/css/modules/table.css" rel="stylesheet" />
+    <link href="./assets/css/modules/star.css" rel="stylesheet" />
+    <link href="./assets/css/screens/booking.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="header shadow">
+      <div class="logo_container">
+        <a href="/">
+          <img
+            alt="GymMaster"
+            class="logo mx-auto img-fluid"
+            src="./assets/img/logo.png"
+          />
+        </a>
+      </div>
+      <a class="btn btn-logout" id="logoutButton">
+        <span class="fa-solid fa-sign-out"></span>
+      </a>
     </header>
 
-    <h1>Welcome!</h1>
+    <main class="main" role="main">
+        <section class="p-5">
+          <div class="container">
+            <div class="grid grid-cols-1 mb-2">
+              <div class="welcome">
+                <h1 id="welcomeMessage" class="title">Welcome, John Doe!</h1>
+              </div>
+            </div>
+      
+            <!-- Membership Info Section -->
+            <div class="grid grid-cols-1"  style="display: grid; place-items: center; width: 100%; max-width: 500px; margin: 0 auto;">
+              <div class="plan-info shadow">
+                <div class="content">
+                  <span class="mType">Membership Type</span>
+                  <h3 class="title" id="membershipType">Premium</h3>
+                </div>
+                <div class="content">
+                  <span class="mType">Expiry Date</span>
+                  <h3 class="title" id="expiryDate">02/12/2024</h3>
+                </div>
+                <div class="content rContent">
+                  <div class="flex justify-between items-center gap-sm">
+                    <button class="mType" style="border-color:transparent;width:150px; height:30px">Get Referral Code</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 mt-4">
+              <div class="flex justify-center items-center gap-4" style="padding: 40px;">
+                <button class="btn btn-feedback" id="feedbackModalTrigger">
+                  Submit Feedback
+                </button>
+                <button class="btn btn-primary" id="bookSessionModalTrigger" style="margin-left: 20px;">
+                  Book Training Session
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      
+      
+    <!--Book Session Modal -->
+    <div class="modal-backdrop" id="bookSessionModal">
+      <div class="modal modal-booking">
+        <div class="modal-header">
+          <h2>Book Training Session</h2>
+          <button class="close close-modal fa fa-close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="">
+            <div class="mb-5 booking-select-date">
+              <input
+                class="form-control w-full shadow"
+                id="bookingSlotDate"
+                type="date"
+              />
+            </div>
+            <div
+              class="alert alert-success mb-5"
+              id="success"
+              style="display: none"
+            ></div>
+            <div
+              class="alert alert-danger mb-5"
+              id="error"
+              style="display: none"
+            ></div>
+            <div class="grid grid-cols-1">
+              <div class="booking-slot-wrapper">
+                <div class="booking-slot shadow">
+                  <span class="icon fa-regular fa-clock"></span>
+                  <span class="time">10:00 AM</span>
+                </div>
+                <div class="booking-slot shadow">
+                  <span class="icon fa-regular fa-clock"></span>
+                  <span class="time">11:00 AM</span>
+                </div>
+                <div class="booking-slot shadow">
+                  <span class="icon fa-regular fa-clock"></span>
+                  <span class="time">12:00 PM</span>
+                </div>
+                <div class="booking-slot shadow">
+                  <span class="icon fa-regular fa-clock"></span>
+                  <span class="time">01:00 PM</span>
+                </div>
+                <div class="booking-slot shadow">
+                  <span class="icon fa-regular fa-clock"></span>
+                  <span class="time">02:00 PM</span>
+                </div>
+                <div class="booking-slot shadow">
+                  <span class="icon fa-regular fa-clock"></span>
+                  <span class="time">03:00 PM</span>
+                </div>
+                <div class="booking-slot shadow">
+                  <span class="icon fa-regular fa-clock"></span>
+                  <span class="time">04:00 PM</span>
+                </div>
+                <div class="booking-slot shadow">
+                  <span class="icon fa-regular fa-clock"></span>
+                  <span class="time">05:00 PM</span>
+                </div>
+                <div class="booking-slot shadow">
+                  <span class="icon fa-regular fa-clock"></span>
+                  <span class="time">06:00 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="container">
-    <div class="container-item container-item-1">
-        <h3>Book Training Sessions</h3>
-    </div>
-    <div class="container-item container-item-2">
-        <h3>Profile/Account Settings</h3>
-    </div>
-    <div class="container-item container-item-3">
-        <h3>Support/Contact Us</h3>
-    </div>
-    <div class="container-item container-item-4">
-        <h3>Referral Program</h3>
-    </div>
+    <!--Feedback Modal -->
+    <div class="modal-backdrop" id="feedbackModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Feedback</h2>
+          <button class="close close-modal fa fa-close"></button>
+        </div>
+        <div
+          class="alert alert-success"
+          id="successMessage"
+          role="alert"
+          style="display: none"
+        >
+          Your submission has been received
+        </div>
+        <div class="modal-body">
+          <form id="feedbackForm">
+            <fieldset>
+              <legend>Cleanliness</legend>
+              <div class="star-rating">
+                <input
+                  id="cleanliness-5"
+                  name="cleanliness"
+                  type="radio"
+                  value="5"
+                />
+                <label class="fas fa-star" for="cleanliness-5"></label>
+                <input
+                  id="cleanliness-4"
+                  name="cleanliness"
+                  type="radio"
+                  value="4"
+                />
+                <label class="fas fa-star" for="cleanliness-4"></label>
+                <input
+                  id="cleanliness-3"
+                  name="cleanliness"
+                  type="radio"
+                  value="3"
+                />
+                <label class="fas fa-star" for="cleanliness-3"></label>
+                <input
+                  id="cleanliness-2"
+                  name="cleanliness"
+                  type="radio"
+                  value="2"
+                />
+                <label class="fas fa-star" for="cleanliness-2"></label>
+                <input
+                  id="cleanliness-1"
+                  name="cleanliness"
+                  type="radio"
+                  value="1"
+                />
+                <label class="fas fa-star" for="cleanliness-1"></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Customer Service</legend>
+              <div class="star-rating">
+                <input
+                  id="customerService-5"
+                  name="customerService"
+                  type="radio"
+                  value="5"
+                />
+                <label class="fas fa-star" for="customerService-5"></label>
+                <input
+                  id="customerService-4"
+                  name="customerService"
+                  type="radio"
+                  value="4"
+                />
+                <label class="fas fa-star" for="customerService-4"></label>
+                <input
+                  id="customerService-3"
+                  name="customerService"
+                  type="radio"
+                  value="3"
+                />
+                <label class="fas fa-star" for="customerService-3"></label>
+                <input
+                  id="customerService-2"
+                  name="customerService"
+                  type="radio"
+                  value="2"
+                />
+                <label class="fas fa-star" for="customerService-2"></label>
+                <input
+                  id="customerService-1"
+                  name="customerService"
+                  type="radio"
+                  value="1"
+                />
+                <label class="fas fa-star" for="customerService-1"></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Equipment Variety</legend>
+              <div class="star-rating">
+                <input
+                  id="equipmentVariety-5"
+                  name="equipmentVariety"
+                  type="radio"
+                  value="5"
+                />
+                <label class="fas fa-star" for="equipmentVariety-5"></label>
+                <input
+                  id="equipmentVariety-4"
+                  name="equipmentVariety"
+                  type="radio"
+                  value="4"
+                />
+                <label class="fas fa-star" for="equipmentVariety-4"></label>
+                <input
+                  id="equipmentVariety-3"
+                  name="equipmentVariety"
+                  type="radio"
+                  value="3"
+                />
+                <label class="fas fa-star" for="equipmentVariety-3"></label>
+                <input
+                  id="equipmentVariety-2"
+                  name="equipmentVariety"
+                  type="radio"
+                  value="2"
+                />
+                <label class="fas fa-star" for="equipmentVariety-2"></label>
+                <input
+                  id="equipmentVariety-1"
+                  name="equipmentVariety"
+                  type="radio"
+                  value="1"
+                />
+                <label class="fas fa-star" for="equipmentVariety-1"></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Suggestion</legend>
+              <textarea
+                class="form-textarea"
+                id="suggestion"
+                name="suggestion"
+                placeholder="Please provide your suggestions or feedback..."
+                rows="4"
+              ></textarea>
+            </fieldset>
+
+            <div>
+              <button class="btn btn-feedback" type="submit">
+                Submit Feedback
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
-
-</body>
+    <script src="assets/js/pages/user/user.js" type="module"></script>
+    <script src="assets/js/pages/admin/logout.js"></script>
+  </body>
 </html>

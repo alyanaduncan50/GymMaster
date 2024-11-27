@@ -1,0 +1,32 @@
+.booking-slot-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.booking-slot {
+  padding: 2rem 1rem;
+  background-color: #fff;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 115px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.booking-slot.active {
+  background-color: var(--primary);
+  color: #fff;
+}
+.booking-slot:hover {
+  box-shadow: 0 4px 12px 1px rgb(0 0 0 / 10%);
+  transform: translateY(-10px) scale(1.05);
+}
+.booking-slot .icon {
+  font-size: 2rem;
+}
+.booking-slot .time {
+  font-size: 1rem;
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
