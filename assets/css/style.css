@@ -51,7 +51,6 @@ ol {
 
 .logo_container {
   display: block;
-  width: 100%;
 }
 .logo_container .logo {
   width: 100%;
@@ -181,9 +180,9 @@ ol {
   outline: none;
   border-radius: 5px;
   border: 1px solid;
-  transition: opacity 0.2s;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
+  transition: all 0.5s ease-in-out;
 }
 .btn:disabled {
   background-color: #ccc;
@@ -194,6 +193,7 @@ ol {
   font-size: 14px;
   border: 1px solid var(--primary);
   background-color: var(--primary);
+  padding: 10px 25px;
   color: #fff;
 }
 .btn-primary:hover {
@@ -221,13 +221,28 @@ ol {
   background-color: #c82333;
 }
 .btn-feedback {
-  padding: 10px 35px;
+  padding: 10px 25px;
   font-size: 16px;
-  border: 1px solid var(--primary);
-  background-color: var(--primary);
-  color: #fff;
+  border: 1px solid #b3dad2;
+  background-color: #e0f1ed;
+  color: var(--primary);
+  max-width: 200px;
 }
-
+.btn-logout {
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #b3dad2;
+  background-color: #e0f1ed;
+  color: var(--primary);
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-logout:hover {
+  background-color: #b2dbd4;
+}
 /* Alert Css */
 .alert {
   padding: 1rem;
@@ -246,7 +261,8 @@ ol {
 .alert-danger {
   color: #721c24;
   background-color: #f8d7da;
-  border-color: #f5c6cb;
+  border: 1px solid #d3acaf;
+  border-radius: 5px;
 }
 
 /* Header Style */
@@ -292,8 +308,6 @@ label {
   font-weight: bold;
   color: #146e69ff;
   border-radius: 5px;
-  /*background-color: rgba(20, 110, 105, 0.18);*/
-  /*padding: 5px 10px;*/
   margin-bottom: 5px;
   display: inline-block;
 }
@@ -325,4 +339,35 @@ label {
   align-items: center;
   justify-content: center;
   cursor: copy;
+}
+
+/* User Welcome */
+.welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+}
+
+.welcome .title {
+  width: 30%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+.welcome .content {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    justify-content: space-between;
+    .btn {
+      max-width: 100%;
+    }
+  }
 }

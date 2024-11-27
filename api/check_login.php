@@ -9,6 +9,7 @@ $response = [
     'success' => false,
     'message' => '',
     'redirect_url' => '',
+    'token' => '',
 ];
 
 try {
@@ -24,7 +25,7 @@ try {
     }
 
     // Fetch user from database
-    $stmt = $pdo->prepare("SELECT id, username, password FROM users WHERE username = :username");
+    $stmt = $pdo->prepare("SELECT id, username, password, email FROM users WHERE username = :username");
     $stmt->execute(['username' => $username]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -34,10 +35,15 @@ try {
         exit;
     }
 
+    // Generate token and store in session
+    $token = bin2hex(random_bytes(16));
+
     // Set session and determine redirect URL
     $_SESSION['user'] = $user;
+    $_SESSION['token'] = $token;
     $response['success'] = true;
     $response['redirect_url'] = BASE_URL . (($user['username'] === 'admin') ? '/admin.html' : '/user.html');
+    $response['token'] = $token;
 } catch (Exception $e) {
     $response['message'] = 'Error: ' . $e->getMessage();
 }
