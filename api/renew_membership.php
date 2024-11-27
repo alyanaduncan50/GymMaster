@@ -10,6 +10,22 @@ $userName = $data['userName'];
 $to = $data['email'];
 $membershipType = $data['membershipType'];
 
+$headers = getallheaders();
+$authHeader = $headers['Authorization'] ?? '';
+$response = [
+    'success' => false,
+    'message' => ''
+];
+
+// Check if token exists
+if (!$authHeader || !preg_match('/Bearer\s(\S+)/', $authHeader, $matches)) {
+    $response['message'] = 'Authorization token is missing or invalid.';
+    echo json_encode($response);
+    exit;
+}
+
+$token = $matches[1];
+
 try {
     // Update the membership in the database (renew the membership)
     $query = "UPDATE users SET last_renewed = NOW(), membership_type = :membershipType WHERE username = :userName";
@@ -37,6 +53,7 @@ try {
 
     echo json_encode([
         'success' => true,
+        'renewalDate' => $currentDate,
         'message' => 'Membership renewed successfully.'
     ]);
 } catch (PDOException $e) {

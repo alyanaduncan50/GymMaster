@@ -2,8 +2,8 @@
 ini_set('display_errors', 0);
 error_reporting(0);
 session_start();
-require '../connection.php';
-require '../email_config.php';
+require '../connection.php'; // Include database connection
+require '../email_config.php'; // Include email configuration
 
 header('Content-Type: application/json');
 
@@ -11,6 +11,18 @@ $response = [
     'success' => false,
     'message' => '',
 ];
+
+// Validate the token
+$headers = apache_request_headers();
+$clientToken = $headers['Authorization'] ?? '';
+$clientToken = str_replace('Bearer ', '', $clientToken);
+
+if (!isset($_SESSION['token']) || $clientToken !== $_SESSION['token']) {
+    http_response_code(401);
+    $response['message'] = 'Unauthorized: Invalid or missing token.';
+    echo json_encode($response);
+    exit;
+}
 
 try {
     // Retrieve and validate input data
@@ -80,6 +92,11 @@ try {
         'referral_code' => $referralCode,
     ]);
 
+    $lastUserId = $pdo->lastInsertId();
+    $stmt = $pdo->prepare("SELECT id, first_name, last_name, email, username, membership_type, referral_code, last_renewed FROM users WHERE id = :id");
+    $stmt->execute(['id' => $lastUserId]);
+    $newUser = $stmt->fetch(PDO::FETCH_ASSOC);
+
     // Send email to the user
     $subject = "Welcome to Our Service!";
     $templatePath = __DIR__ . '/../email/welcome_email_template.html';
@@ -95,6 +112,7 @@ try {
     sendEmail($email, $subject, $emailMessage);
 
     $response['success'] = true;
+    $response['newUser'] = $newUser;
     $response['message'] = 'User registered successfully, and email sent.';
 } catch (Exception $e) {
     $response['message'] = 'Error: ' . $e->getMessage();
