@@ -10,10 +10,14 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
     <link href="./assets/css/style.css" rel="stylesheet" />
     <link href="./assets/css/utilities.css" rel="stylesheet" />
-    <link href="./assets/css/modules/table.css" rel="stylesheet" />
     <link href="./assets/css/modules/modal.css" rel="stylesheet" />
+    <link href="./assets/css/modules/table.css" rel="stylesheet" />
   </head>
   <body>
     <header class="header shadow">
@@ -26,28 +30,28 @@
           />
         </a>
       </div>
-      <div></div>
+      <a class="btn btn-logout" id="logoutButton">
+        <span class="fa-solid fa-sign-out"></span>
+      </a>
     </header>
-
     <main class="main" role="main">
-      <section class="p-5" style="background-color: #f4f4f3">
+      <section class="p-5">
         <div class="container">
           <div class="grid grid-cols-1 mb-2">
-            <h1>Administrator Dashboard</h1>
+            <h1>Welcome, Administrator!</h1>
+
             <div class="filter-wrapper">
               <div class="filter-search">
                 <input
                   class="form-control"
+                  id="searchInput"
                   placeholder="Search here..."
                   type="text"
                 />
               </div>
               <div class="table-filter">
-                <select
-                  class="form-control"
-                  id="filterMemberShip"
-                  name="memberShipStatus"
-                >
+                <select class="form-control" id="filterMemberShip">
+                  <option value="all">All</option>
                   <option value="active">Active</option>
                   <option value="expired">Expired</option>
                 </select>
@@ -74,160 +78,10 @@
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="userTableBody">
                   <tr>
-                    <td colspan="10">
-                      <div class="text-center">No Records Found</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john.doe@example.com</td>
-                    <td>johndoe</td>
-                    <td>Premium</td>
-                    <td>REF12345</td>
-                    <td>01-11-2024</td>
-                    <td>
-                      <div class="table-action">
-                        <button class="btn btn-primary view-btn">View</button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Jane</td>
-                    <td>Smith</td>
-                    <td>jane.smith@example.com</td>
-                    <td>janesmith</td>
-                    <td>Basic</td>
-                    <td>REF67890</td>
-                    <td>05-10-2024</td>
-                    <td>
-                      <div class="table-action">
-                        <button class="btn btn-primary view-btn">View</button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Michael</td>
-                    <td>Johnson</td>
-                    <td>michael.johnson@example.com</td>
-                    <td>mjohnson</td>
-                    <td>Premium</td>
-                    <td>REF11223</td>
-                    <td>12-10-2024</td>
-                    <td>
-                      <div class="table-action">
-                        <button class="btn btn-primary view-btn">View</button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Emily</td>
-                    <td>Brown</td>
-                    <td>emily.brown@example.com</td>
-                    <td>ebrown</td>
-                    <td>Basic</td>
-                    <td>REF33445</td>
-                    <td>20-10-2024</td>
-                    <td>
-                      <div class="table-action">
-                        <button class="btn btn-primary view-btn">View</button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Chris</td>
-                    <td>Davis</td>
-                    <td>chris.davis@example.com</td>
-                    <td>cdavis</td>
-                    <td>Premium</td>
-                    <td>REF55667</td>
-                    <td>25-10-2024</td>
-                    <td>
-                      <div class="table-action">
-                        <button class="btn btn-primary view-btn">View</button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>Sarah</td>
-                    <td>Miller</td>
-                    <td>sarah.miller@example.com</td>
-                    <td>smiller</td>
-                    <td>Basic</td>
-                    <td>REF77889</td>
-                    <td>28-10-2024</td>
-                    <td>
-                      <div class="table-action">
-                        <button class="btn btn-primary view-btn">View</button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td>David</td>
-                    <td>Wilson</td>
-                    <td>david.wilson@example.com</td>
-                    <td>dwilson</td>
-                    <td>Premium</td>
-                    <td>REF99001</td>
-                    <td>30-10-2024</td>
-                    <td>
-                      <div class="table-action">
-                        <button class="btn btn-primary view-btn">View</button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>8</td>
-                    <td>Anna</td>
-                    <td>Moore</td>
-                    <td>anna.moore@example.com</td>
-                    <td>amoore</td>
-                    <td>Basic</td>
-                    <td>REF22334</td>
-                    <td>10-10-2024</td>
-                    <td>
-                      <div class="table-action">
-                        <button class="btn btn-primary view-btn">View</button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>9</td>
-                    <td>James</td>
-                    <td>Taylor</td>
-                    <td>james.taylor@example.com</td>
-                    <td>jtaylor</td>
-                    <td>Premium</td>
-                    <td>REF44556</td>
-                    <td>18-10-2024</td>
-                    <td>
-                      <div class="table-action">
-                        <button class="btn btn-primary view-btn">View</button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>Jessica</td>
-                    <td>Anderson</td>
-                    <td>jessica.anderson@example.com</td>
-                    <td>janderson</td>
-                    <td>Basic</td>
-                    <td>REF66778</td>
-                    <td>15-10-2024</td>
-                    <td>
-                      <div class="table-action">
-                        <button class="btn btn-primary view-btn">View</button>
-                      </div>
+                    <td colspan="9">
+                      <div class="text-center">Loading data...</div>
                     </td>
                   </tr>
                 </tbody>
@@ -237,130 +91,151 @@
         </div>
       </section>
     </main>
-   
     <!--Create User Modal -->
     <div class="modal-backdrop" id="userModal">
-        <div class="modal">
-          <div class="modal-header">
-            <h2>Create New User</h2>
-            <button class="close close-modal">&times;</button>
-          </div>
-          <div
-            class="alert alert-success"
-            id="successMessage"
-            role="alert"
-            style="display: none"
-          >
-            User created successfully
-          </div>
-          <div class="modal-body">
-            <form class="addUserForm" id="addUserForm" method="POST">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Create New User</h2>
+          <button class="close close-modal fa fa-close"></button>
+        </div>
+        <div
+          class="alert alert-success"
+          id="successMessage"
+          role="alert"
+          style="display: none"
+        >
+          User created successfully
+        </div>
+        <div
+          class="alert alert-danger"
+          id="errorMessage"
+          role="alert"
+          style="display: none"
+        >
+          Something went wrong!
+        </div>
+        <div class="modal-body">
+          <form class="addUserForm" id="addUserForm" method="POST">
+            <div class="grid grid-cols-1 gap-lg">
+              <div class="grid grid-cols-2 gap-lg">
+                <div class="input-group">
+                  <label class="label" for="firstName">First Name</label>
+                  <input
+                    class="form-control"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="Enter First Name"
+                    type="text"
+                  />
+                  <span class="error-message" id="firstName-error"></span>
+                </div>
+                <div class="input-group">
+                  <label class="label" for="lastName">Last Name</label>
+                  <input
+                    class="form-control"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Enter Last Name"
+                    type="text"
+                  />
+                  <span class="error-message" id="lastName-error"></span>
+                </div>
+              </div>
               <div class="grid grid-cols-1 gap-lg">
-                <div class="grid grid-cols-2 gap-lg">
-                  <div class="input-group">
-                    <label class="label" for="firstName">First Name</label>
-                    <input
-                      class="form-control"
-                      id="firstName"
-                      name="firstName"
-                      placeholder="Enter First Name"
-                      type="text"
-                    />
-                    <span class="error-message" id="firstName-error"></span>
-                  </div>
-                  <div class="input-group">
-                    <label class="label" for="lastName">Last Name</label>
-                    <input
-                      class="form-control"
-                      id="lastName"
-                      name="lastName"
-                      placeholder="Enter Last Name"
-                      type="text"
-                    />
-                    <span class="error-message" id="lastName-error"></span>
-                  </div>
+                <div class="input-group">
+                  <label class="label" for="email">Email Address</label>
+                  <input
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter Email Address"
+                    type="email"
+                  />
+                  <span class="error-message" id="email-error"></span>
                 </div>
-                <div class="grid grid-cols-1 gap-lg">
-                  <div class="input-group">
-                    <label class="label" for="email">Email Address</label>
-                    <input
-                      class="form-control"
-                      id="email"
-                      name="email"
-                      placeholder="Enter Email Address"
-                      type="email"
-                    />
-                    <span class="error-message" id="email-error"></span>
-                  </div>
-                  <div class="input-group">
-                    <label class="label" for="newUsername">Username</label>
-                    <input
-                      class="form-control"
-                      id="newUsername"
-                      name="newUsername"
-                      placeholder="Enter Username"
-                      type="text"
-                    />
-                    <span class="error-message" id="newUsername-error"></span>
-                  </div>
-                </div>
-                <div class="grid grid-cols-2 gap-lg">
-                  <div class="input-group">
-                    <label class="label" for="newPassword">Password</label>
-                    <input
-                      class="form-control"
-                      id="newPassword"
-                      name="newPassword"
-                      placeholder="Enter Password"
-                      type="password"
-                    />
-                    <span class="error-message" id="newPassword-error"></span>
-                  </div>
-                  <div class="input-group">
-                    <label class="label" for="confirmPassword"
-                      >Confirm Password</label
-                    >
-                    <input
-                      class="form-control"
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      placeholder="Confirm Password"
-                      type="password"
-                    />
-                    <span class="error-message" id="confirmPassword-error"></span>
-                  </div>
-                </div>
-                <div class="grid grid-cols-1 gap-lg">
-                  <div class="input-group">
-                    <label class="label" for="membershipType"
-                      >Membership Type</label
-                    >
-                    <select
-                      class="form-select"
-                      id="membershipType"
-                      name="membershipType"
-                    >
-                      <option value="basic">Basic</option>
-                      <option value="premium">Premium</option>
-                    </select>
-                    <span class="error-message" id="membershipType-error"></span>
-                  </div>
+                <div class="input-group">
+                  <label class="label" for="newUsername">Username</label>
+                  <input
+                    class="form-control"
+                    id="newUsername"
+                    name="newUsername"
+                    placeholder="Enter Username"
+                    type="text"
+                  />
+                  <span class="error-message" id="newUsername-error"></span>
                 </div>
               </div>
-              <div class="mt-2">
-                <button class="btn btn-primary" type="submit">Create User</button>
+              <div class="grid grid-cols-2 gap-lg">
+                <div class="input-group">
+                  <label class="label" for="newPassword">Password</label>
+                  <input
+                    class="form-control"
+                    id="newPassword"
+                    name="newPassword"
+                    placeholder="Enter Password"
+                    type="password"
+                  />
+                  <span class="error-message" id="newPassword-error"></span>
+                </div>
+                <div class="input-group">
+                  <label class="label" for="confirmPassword"
+                    >Confirm Password</label
+                  >
+                  <input
+                    class="form-control"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    type="password"
+                  />
+                  <span class="error-message" id="confirmPassword-error"></span>
+                </div>
               </div>
-            </form>
-          </div>
+              <div class="grid grid-cols-1 gap-lg">
+                <div class="input-group">
+                  <label class="label" for="membershipType"
+                    >Membership Type</label
+                  >
+                  <select
+                    class="form-select"
+                    id="membershipType"
+                    name="membershipType"
+                  >
+                    <option value="basic">Basic</option>
+                    <option value="premium">Premium</option>
+                  </select>
+                  <span class="error-message" id="membershipType-error"></span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-2">
+              <button class="btn btn-primary" type="submit">Create User</button>
+            </div>
+          </form>
         </div>
       </div>
+    </div>
 
-       <!-- Edit Membership Modal -->
+    <!-- Update Membership -->
     <div class="modal-backdrop" id="viewModal" style="display: none">
       <div class="modal">
         <div class="modal-header">
           <h2>View User</h2>
-          <button class="close close-modal">&times;</button>
+          <button class="close close-modal fa fa-close"></button>
+        </div>
+        <div
+          class="alert alert-success"
+          id="editSuccessMessage"
+          role="alert"
+          style="display: none"
+        ></div>
+        <div
+          class="alert alert-danger"
+          id="editErrorMessage"
+          role="alert"
+          style="display: none"
+        >
+          Something went wrong!
         </div>
         <form>
           <div class="modal-body">
@@ -384,7 +259,7 @@
                     <td id="editUsername"></td>
                   </tr>
                   <tr>
-                    <td><strong>Expiry Date</strong></td>
+                    <td><strong>Last Renewed</strong></td>
                     <td id="editLastRenew"></td>
                   </tr>
                 </tbody>
@@ -420,6 +295,8 @@
       </div>
     </div>
 
-      <script src="./assets/js/admin.js" type="module"></script>
-    </body>
+    <script src="assets/js/pages/admin/admin.js" type="module"></script>
+    <script src="assets/js/pages/admin/membership.js" type="module"></script>
+    <script src="assets/js/pages/admin/logout.js"></script>
+  </body>
 </html>

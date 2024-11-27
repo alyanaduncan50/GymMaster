@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => {
         console.log("Response data:", response);
         if (response.success) {
+          localStorage.setItem("authToken", response.token);
           window.location.href = response.redirect_url;
         } else {
           passwordError.textContent = response.message;

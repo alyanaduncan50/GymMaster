@@ -1,10 +1,6 @@
-<?php include 'config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script>
-      const BASE_URL = "<?php echo BASE_URL; ?>";
-    </script>
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>GymMaster | Control Panel</title>
@@ -66,54 +62,12 @@
                 </button>
               </div>
 
-              <div class="forgotPass">
-                <span id="forgotPassModalTrigger">Forgot Password ?</span>
-              </div>
+              <div class="forgotPass"></div>
             </div>
           </form>
         </div>
       </div>
     </section>
-
-    <!--Forgot pass Modal -->
-
-    <div class="modal-backdrop" id="forgotPassModal">
-      <div class="modal">
-        <div class="modal-header">
-          <h2>Reset Password</h2>
-          <button class="close close-modal fa fa-close"></button>
-        </div>
-        <div
-          class="alert alert-success"
-          id="successMessage"
-          role="alert"
-          style="display: none"
-        >
-          Password has been sent to your email.
-        </div>
-        <div class="modal-body">
-          <form id="forgotPassForm">
-            <div>
-              <div class="input-group">
-                <label class="label" for="email">Email Address </label>
-                <input
-                  class="form-control"
-                  id="email"
-                  placeholder="Enter Email Address"
-                  type="text"
-                />
-                <span class="error-message" id="email-error"></span>
-              </div>
-            </div>
-            <div>
-              <button class="btn btn-primary mt-2" type="submit">
-                Get Verification Email
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
 
     <script src="assets/js/pages/login/login.js" type="module"></script>
   </body>
