@@ -1,0 +1,26 @@
+#pageTitle {
+    padding-top: 20px;    
+    padding-bottom: 20px; 
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.form-actions button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-actions .btn-save {
+    margin-top: 5px;
+    background-color:#17726d; 
+    color: #fff;
+    opacity: 0.8;
+}
+
+.form-actions .btn-save:hover {
+    opacity: 1;
+}
