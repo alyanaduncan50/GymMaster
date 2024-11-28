@@ -181,3 +181,17 @@
         width: 100%;
     }
 }
+
+#backBtn{
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #b3dad2;
+    background-color: #e0f1ed;
+    color: var(--primary);
+    text-align: center;
+    margin-right: 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

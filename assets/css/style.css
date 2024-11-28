@@ -234,8 +234,10 @@ ol {
   background-color: #e0f1ed;
   color: var(--primary);
   text-align: center;
+  margin-right: 10px;
   text-decoration: none;
-  display: flex;
+  height: 50;
+  width: 90;
   align-items: center;
   justify-content: center;
 }
