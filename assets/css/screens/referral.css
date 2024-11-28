@@ -88,4 +88,7 @@ button:hover {
     transform: translateY(-3px); /* move the button upward */
 }
 
-
+#referralCode{
+    font-size: 20px;
+    font-weight: bolder;
+}

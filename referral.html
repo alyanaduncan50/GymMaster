@@ -18,9 +18,9 @@
       <h6>Referral Code</h6>
       <div class="centerlogo">
         <img id="gift_box" src="assets/img/gift_box.png" alt="Gift Box" />
-        <span class="title" id="referralCode">REF12345</span>
+        <span id="referralCode">REF12345</span>
       </div>
-      <button>Save Code & Continue</button>
+      <button id = "copyCodeButton">Copy Code</button>
 
       <a class="linkbtn" href="javascript:history.back()" id="back-btn"
         >Go Back</a
@@ -29,3 +29,20 @@
   </body>
 </html>
 <script src="assets/js/pages/user/referral.js" type="module"></script>
+<script>
+  
+  document.getElementById("copyCodeButton").addEventListener("click", function () {
+    try {
+      const referralCodeElement = document.getElementById("referralCode");
+      const referralCode = referralCodeElement.textContent || referralCodeElement.innerText;
+     
+      navigator.clipboard.writeText(referralCode);
+
+      alert("Referral code copied to clipboard!");
+
+    } catch (error) {
+      console.error("Failed to copy text:", error);
+      alert("Failed to copy referral code. Please try again.");
+    }
+  });
+</script>
