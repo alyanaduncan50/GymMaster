@@ -48,13 +48,14 @@ try {
     // Send the email
   
     $subject = "Membership Renewed Successfully";
-    sendEmail($to, $subject, $emailMessage);
+    $is_sent = sendEmail($to, $subject, $emailMessage);
 
+    $message = $is_sent ? 'Membership renewed successfully.' : 'Membership renewed successfully, problem sending email';
 
     echo json_encode([
         'success' => true,
         'renewalDate' => $currentDate,
-        'message' => 'Membership renewed successfully.'
+        'message' => $message
     ]);
 } catch (PDOException $e) {
     echo json_encode([

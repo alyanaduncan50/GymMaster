@@ -36,11 +36,13 @@ try {
 
             // Send cancellation email
             $subject = "Membership Cancelled";
-            sendEmail($to, $subject, $emailMessage);
+            $is_sent = sendEmail($to, $subject, $emailMessage);
+
+            $message = $is_sent ? 'Membership cancelled and email sent.' : 'Membership cancelled, problem sending email.';
 
             echo json_encode([
                 'success' => true,
-                'message' => 'Membership cancelled and email sent.'
+                'message' => $message
             ]);
         } else {
             throw new Exception("Email template file not found.");

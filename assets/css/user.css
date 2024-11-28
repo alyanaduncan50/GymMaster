@@ -1,0 +1,34 @@
+.centercard {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.centerbtn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.ml {
+  margin-left: 20px;
+}
+
+.centertext {
+  text-align: center !important;
+  display: block !important;
+}
+
+.linkbtn {
+  text-decoration: none;
+  color: #00796b;
+}
+
+.centerlogo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}

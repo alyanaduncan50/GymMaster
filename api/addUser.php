@@ -109,11 +109,13 @@ try {
     );
     
 
-    sendEmail($email, $subject, $emailMessage);
+    $is_sent = sendEmail($email, $subject, $emailMessage);
+    $message = $is_sent ? "User registered successfully, and email sent." : "User registered successfully, problem sending email";
+    //$mesaage = $is_sent??"User registered successfully, and email sent."||"User registered successfully, problem sending email";
 
     $response['success'] = true;
     $response['newUser'] = $newUser;
-    $response['message'] = 'User registered successfully, and email sent.';
+    $response['message'] = $message;
 } catch (Exception $e) {
     $response['message'] = 'Error: ' . $e->getMessage();
 }

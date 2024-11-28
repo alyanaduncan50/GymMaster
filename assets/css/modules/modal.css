@@ -1,72 +1,76 @@
 .modal-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 101;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: none;
 }
 .modal {
-    background-color: white;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 600px;
-    animation: fadeIn 0.3s ease-in-out;
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 600px;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
 }
 
 .modal-header h2 {
-    margin: 0;
-    font-size: 1.5rem;
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 .modal .close {
-    border: 0;
-    background-color: rgba(20, 110, 105, 0.12);
-    color: #80b2af;
-    outline: none;
-    width: 40px;
-    height: 35px;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 16px;
-    transition: all 0.1s ease-in-out;
+  border: 0;
+  background-color: rgba(20, 110, 105, 0.12);
+  color: #80b2af;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.1s ease-in-out;
 }
 .modal .close:hover {
-    background-color: var(--primary);
-    border: 1px solid var(--primary);
-    color: white;
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+  color: white;
 }
 
 .modal-body {
-    padding: 2rem;
+  padding: 2rem;
+  max-height: 555px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    padding: 1rem;
-    border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
 }
 
-
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal.modal-booking {
+  max-width: 605px;
 }

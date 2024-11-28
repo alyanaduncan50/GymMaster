@@ -21,7 +21,7 @@ body {
   font-style: normal;
   line-height: 1.4;
   color: #242424;
-  background-color: #f7f7f7;
+  background-color: #f3f3f3;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -89,10 +89,10 @@ ol {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-    outline: none;
+  outline: none;
 }
 .form-textarea:focus {
-    box-shadow: 0 0 1px 1px var(--primary);
+  box-shadow: 0 0 1px 1px var(--primary);
 }
 .form-select {
   font-size: 14px;
@@ -124,9 +124,7 @@ ol {
 
 /* Shadows */
 .shadow {
-  box-shadow:
-    0 1px 2px 0 rgba(0, 0, 0, 0.2),
-    0 2px 8px 1px rgb(0 0 0 / 6%);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 1px rgb(0 0 0 / 6%);
 }
 
 .text-center {
@@ -158,18 +156,18 @@ ol {
 }
 
 .forgotPass {
-    text-align: center;
-    margin: 20px auto;
-    padding-bottom: 30px;
+  text-align: center;
+  margin: 20px auto;
+  padding-bottom: 30px;
 }
 .forgotPass span {
-    cursor: pointer;
-    text-decoration: none;
-    color: #000;
-    transition: color 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  transition: color 0.2s;
 }
 .forgotPass span:hover {
-    color: var(--primary);
+  color: var(--primary);
 }
 /* Button */
 
@@ -220,7 +218,8 @@ ol {
 .btn-danger:hover {
   background-color: #c82333;
 }
-.btn-feedback {
+.btn-feedback,
+.btn-referral {
   padding: 10px 25px;
   font-size: 16px;
   border: 1px solid #b3dad2;
@@ -298,22 +297,20 @@ label {
 /*Plan Info*/
 
 .plan-info {
-  place-items: center;
   background-color: white;
   padding: 2rem;
   border-radius: 5px;
-  max-width: 350px;
-  
+  max-width: 320px;
+  margin: auto;
+  text-align: center;
 }
 .plan-info .mType {
-  font-size: 15px;
-  justify-content: center; 
-  align-items: center;
+  font-size: 10px;
   font-weight: bold;
   color: #146e69ff;
   border-radius: 5px;
   margin-bottom: 5px;
-  display: flex;
+  display: inline-block;
 }
 .plan-info .content {
   margin-bottom: 20px;
@@ -322,11 +319,9 @@ label {
   margin-bottom: 0;
 }
 .plan-info .title {
-  justify-content: center; 
-  align-items: center;
-  font-size: 23px;
-  letter-spacing: 1px;
-  display: flex;
+  font-size: 25px;
+  letter-spacing: 2px;
+  display: block;
 }
 .rContent .title {
   font-size: 35px;

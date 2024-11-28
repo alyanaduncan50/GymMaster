@@ -42,7 +42,7 @@ try {
     $_SESSION['user'] = $user;
     $_SESSION['token'] = $token;
     $response['success'] = true;
-    $response['redirect_url'] = BASE_URL . (($user['username'] === 'admin') ? '/admin.html' : '/user.html');
+    $response['redirect_url'] = BASE_URL . (($user['username'] === 'admin') ? 'admin.html' : 'user.html');
     $response['token'] = $token;
 } catch (Exception $e) {
     $response['message'] = 'Error: ' . $e->getMessage();

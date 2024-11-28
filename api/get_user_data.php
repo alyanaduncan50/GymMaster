@@ -19,7 +19,7 @@ try {
         http_response_code(401);
         $response['success'] = false;
         $response['code'] = '401';
-        $response['redirect_url'] = '/gym/login.html';
+        $response['redirect_url'] = `${BASE_URL}login.html`;
         $response['message'] = 'Unauthorized: Invalid or missing token.';
         echo json_encode($response);
         exit;

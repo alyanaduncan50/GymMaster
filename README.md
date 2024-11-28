@@ -1,1 +1,1 @@
-COMP2140 Project
+# COMP2140 Project - GymMaster
